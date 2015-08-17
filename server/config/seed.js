@@ -5,8 +5,27 @@
 
 'use strict';
 
+var Group = require('../api/group/group.model');
+var Event = require('../api/event/event.model');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+
+Event.find({}).remove(function () { });
+
+Group.find({}).remove(function() {
+  Group.create({
+    name : 'Fuzbal (Xlab)',
+    slug : 'fuzbal',
+    description : '...'
+  }, function (err, group) {
+    Event.create({
+      name: "new event",
+      date: new Date(),
+      users: ["Polutnik", "Hadalin"],
+      group: group._id
+    });
+  });
+});
 
 Thing.find({}).remove(function() {
   Thing.create({
