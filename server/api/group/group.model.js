@@ -6,9 +6,11 @@ var mongoose = require('mongoose'),
 
 var GroupSchema = new Schema({
   name: String,
-  slug: String,
-  info: String,
-  active: Boolean
+  slug: {
+    type: String,
+    required: true
+  },
+  info: String
 });
 
 GroupSchema.path('slug').validate(validators.validateSlug, 'Incorrect slug');
