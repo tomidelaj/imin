@@ -11,3 +11,13 @@ exports.validateSlug = function(value) {
     return false;
   }
 }
+
+exports.validateMessage = function(value) {
+  // Message must not be longer than 140 chars
+  return value.length <= 140;
+}
+
+exports.validateMessageSender = function(value) {
+  // Message sender must not be longer than 20 chars
+  return value.length <= 20;
+}
