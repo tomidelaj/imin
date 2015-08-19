@@ -22,6 +22,14 @@ describe('Slug validator', function() {
    it('should return false when special characters used', function() {
        validator.validateSlug('fuzbal!').should.equal(false);
    });
+
+   it('should return false when less than 3 characters used', function() {
+       validator.validateSlug('fu').should.equal(false);
+   });
+
+   it('should return false when more than 20 characters used', function() {
+       validator.validateSlug('fuzbalfuzbalfuzbalfuz').should.equal(false);
+   });
 })
 
 describe('Message validator', function() {
