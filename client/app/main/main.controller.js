@@ -1,27 +1,21 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl', function ($scope, $http, $location, Groups) {
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+    $scope.createGroup = function () {
+      var group = new Groups({
+        slug: $scope.newGroup
+      });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      group.$save(function (response) {
+        $location.path('group/' + response._id);
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+    $scope.find = function () {
+      $scope.groups = Groups.query();
     };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
   });

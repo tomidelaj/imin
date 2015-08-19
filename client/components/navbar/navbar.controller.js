@@ -2,10 +2,20 @@
 
 angular.module('iminApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+    $scope.menu = [
+      {
+        'title': 'Home',
+        'link': '/'
+      },
+      {
+        'title': 'Groups',
+        'link' : '/group'
+      },
+      {
+        'title': 'Events',
+        'link' : '/event'
+      }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
