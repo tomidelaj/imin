@@ -2,9 +2,10 @@
 
 var _ = require('lodash');
 var Group = require('./group.model');
+var Event = require('../event/event.model');
 
 // Get list of groups
-exports.index = function(req, res) {
+exports.list = function(req, res) {
   Group.find(function (err, groups) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(groups);
@@ -12,7 +13,7 @@ exports.index = function(req, res) {
 };
 
 // Get a single group
-exports.show = function(req, res) {
+exports.read = function(req, res) {
   Group.findById(req.params.id, function (err, group) {
     if(err) { return handleError(res, err); }
     if(!group) { return res.status(404).send('Not Found'); }
@@ -51,6 +52,14 @@ exports.destroy = function(req, res) {
       if(err) { return handleError(res, err); }
       return res.status(204).send('No Content');
     });
+  });
+};
+
+// Get a single group
+exports.events = function(req, res) {
+  Event.findByGroupId(req.params.id, function(err, events){
+    if(err) { return handleError(res, err); }
+    return res.json(events);
   });
 };
 

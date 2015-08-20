@@ -11,10 +11,12 @@ var GroupSchema = new Schema({
   },
   slug: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   }
 });
 
+// Validation
 GroupSchema.path('slug').validate(validators.validateSlug,
   'Slug validation failed');
 

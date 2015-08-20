@@ -20,7 +20,34 @@ Group.find({}).remove(function() {
     description : 'Ale sisiji xlabovi'
   }, function (err, group) {
     Event.create({
-      name: "new event",
+      name: "Event 1",
+      date: new Date(),
+      users: ["Polutnik", "Hadalin"],
+      group: group._id
+    });
+
+    Event.create({
+      name: "Event 2",
+      date: new Date(),
+      users: ["Polutnik"],
+      group: group._id
+    });
+
+    Event.create({
+      name: "Event 3",
+      date: new Date(),
+      users: [],
+      group: group._id
+    });
+  });
+
+  Group.create({
+    name : 'Basket (Xlab)',
+    slug : 'basket',
+    description : '...'
+  }, function (err, group) {
+    Event.create({
+      name: "Event 1",
       date: new Date(),
       users: ["Polutnik", "Hadalin"],
       group: group._id
