@@ -6,6 +6,7 @@ angular.module('iminApp')
       $scope.groups = Groups.query();
     };
 
+
     $scope.remove = function (group) {
 
       group.$remove();
@@ -32,6 +33,12 @@ angular.module('iminApp')
 
     $scope.findOne = function () {
       $scope.group = Groups.get({
+        groupId: $stateParams.groupId
+      });
+    };
+
+    $scope.findEvents = function () {
+      $scope.events = Groups.events({
         groupId: $stateParams.groupId
       });
     };
