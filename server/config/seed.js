@@ -7,6 +7,7 @@
 
 var Group = require('../api/group/group.model');
 var Event = require('../api/event/event.model');
+var Message = require('../api/message/message.model');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 
@@ -14,15 +15,22 @@ Event.find({}).remove(function () { });
 
 Group.find({}).remove(function() {
   Group.create({
-    name : 'Fuzbal (Xlab)',
-    slug : 'fuzbal',
-    description : '...'
+    name: 'Fuzbal (Xlab)',
+    slug: 'fuzbal',
+    description : 'Ale sisiji xlabovi'
   }, function (err, group) {
     Event.create({
       name: "new event",
       date: new Date(),
       users: ["Polutnik", "Hadalin"],
       group: group._id
+    }, function(err, event) {
+      Message.create({
+        sender: 'Mario',
+        message: 'Prneste žogo',
+        date: new Date(),
+        event: event._id
+      });
     });
   });
 });

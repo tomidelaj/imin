@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('iminApp').factory('Groups', function ($resource) {
+angular.module('iminApp').factory('Groups', function($resource) {
 
   return $resource('api/groups/:groupId', {
     groupId: '@_id'

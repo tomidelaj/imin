@@ -1,6 +1,10 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('EventCtrl', function ($scope) {
-    $scope.message = 'Hello';
+  .controller('EventCtrl', function($scope, $stateParams, Events) {
+
+    $scope.event = Events.get({
+      eventId: $stateParams.eventId
+    });
+
   });
