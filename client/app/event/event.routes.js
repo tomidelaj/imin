@@ -3,14 +3,14 @@
 angular.module('iminApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('viewEvent', {
+      .state('event', {
         url: '/event/:eventId',
-        templateUrl: 'app/event/views/view-event.html',
+        templateUrl: 'app/event/views/event.html',
         controller: 'EventCtrl'
       })
-      .state('event', {
+      .state('events', {
         url: '/event',
-        templateUrl: 'app/event/view/event.html',
+        templateUrl: 'app/event/views/events.html',
         controller: 'EventCtrl'
       });
   });

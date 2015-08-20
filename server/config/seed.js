@@ -24,6 +24,13 @@ Group.find({}).remove(function() {
       date: new Date(),
       users: ["Polutnik", "Hadalin"],
       group: group._id
+    }, function (err, event){
+      Message.create({
+        sender: 'Mariano',
+        message: 'Prneste žogo',
+        date: new Date(),
+        event: event._id
+      });
     });
 
     Event.create({
