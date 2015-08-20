@@ -12,5 +12,5 @@ angular.module('iminApp')
         url: '/group',
         templateUrl: 'app/group/views/group.html',
         controller: 'GroupCtrl'
-      })
+      });
   });
