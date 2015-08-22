@@ -7,4 +7,8 @@ angular.module('iminApp')
       eventId: $stateParams.eventId
     });
 
+    $scope.messages = Events.messages({
+      eventId: $stateParams.eventId
+    });
+
   });

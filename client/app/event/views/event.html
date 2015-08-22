@@ -5,4 +5,15 @@
       Single event - {{ event._id }}
     </div>
   </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Messages</p>
+      <ul ng-repeat="message in messages">
+        <li>{{ message.sender }}: {{ message.message }}</li>
+      </ul>
+    </div>
+  </div>
 </div>

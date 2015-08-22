@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Event = require('./event.model');
+var Message = require('../message/message.model');
 
 // Get list of events
 exports.index = function(req, res) {
@@ -51,6 +52,13 @@ exports.destroy = function(req, res) {
       if(err) { return handleError(res, err); }
       return res.status(204).send('No Content');
     });
+  });
+};
+
+exports.messages = function(req, res) {
+  Message.findByEventId(req.params.id, function(err, messages) {
+    if(err) { return handleError(res, err); }
+    return res.json(messages);
   });
 };
 

@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 var EventSchema = new Schema({
   name: String,
@@ -13,8 +13,10 @@ var EventSchema = new Schema({
   }
 });
 
-EventSchema.statics.findByGroupId = function (groupId, cb){
-  return this.find({group: new mongoose.Types.ObjectId(groupId) }, cb);
+EventSchema.statics.findByGroupId = function(groupId, cb) {
+  return this.find({
+    group: new mongoose.Types.ObjectId(groupId)
+  }, cb);
 };
 
 module.exports = mongoose.model('Event', EventSchema);

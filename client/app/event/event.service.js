@@ -2,11 +2,18 @@
 
 angular.module('iminApp').factory('Events', function($resource) {
 
-  return $resource('api/events/:eventId', {
+  var baseUrl = 'api/events/:eventId';
+
+  return $resource(baseUrl, {
     eventId: '@_id'
   }, {
     update: {
       method: 'PUT'
+    },
+    messages: {
+      url: baseUrl + '/messages',
+      method: 'GET',
+      isArray: true
     }
   });
 });
