@@ -51,10 +51,6 @@ module.exports = function (grunt) {
     open: {
       server: {
         url: 'http://localhost:<%= express.options.port %>'
-      },
-      dev: {
-        url: 'http://localhost:<%= express.options.port %>',
-        app: 'Google Chrome'
       }
     },
     watch: {
@@ -624,7 +620,7 @@ module.exports = function (grunt) {
       'autoprefixer',
       'express:dev',
       'wait',
-      'open:dev',
+      'open',
       'watch'
     ]);
   });
