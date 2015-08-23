@@ -7,7 +7,7 @@ angular.module('iminApp')
       link: function($scope, element, attrs) {
         angular.element($window).bind('scroll', function() {
           console.log(attrs);
-          if (this.pageYOffset > 150) {
+          if (this.pageYOffset > 100) {
             element.addClass(attrs.scrollClass);
           } else {
             element.removeClass(attrs.scrollClass);
