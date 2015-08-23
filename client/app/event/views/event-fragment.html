@@ -1,12 +1,51 @@
-  <div class="event-frag">
-    <span><a href="/event/{{ event._id }}">{{event.name}} on {{event.date}}</a></span>
+<md-whiteframe class="md-whiteframe-z3 event-frag" layout layout-align="">
+  <div layout="column" flex>
+    <div class="frag-section" layout='row'>
+      <div flex>
+      <a href="/event/{{event._id}}"><h2> {{event.name}} </h3></a>
+      <h3> {{event.date}} </h3>
+      </div>
+      <div flex layout='column' layout-align='center center'>
+        <span>IN: 8, OUT:9</span>
+        <span>Commnets: 10</span>
+      </div>
+      <div class="" >
+      <a href="https://www.google.si/maps/search/Ljubljana, Rakuseva 24">
+      <img src='https://maps.googleapis.com/maps/api/staticmap?center=Ljubljana, Rakuseva 24&zoom=13&size=128x128'/>
+      </a>
 
-    <div ng-show="event.users.length > 0">
-      <ul class="col-lg-12" ng-repeat="user in event.users">
-        <li>{{user}}</li>
-      </ul>
+      </div>
     </div>
-    <div ng-show="event.users.length == 0">
-      Ni prijavljenih.
+
+    <md-divider></md-divider>
+
+    <div class="frag-section" layout='column'>
+      <md-content layout-padding layout='row' layout-align='center end'>
+        <md-input-container flex>
+          <label>Name</label>
+          <input ng-model="user" type="text">
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click='addUser(event, user)'>I'm IN</md-button>
+      </md-content>
+      <md-list flex layout-padding ng-show="event.users.length > 0" >
+        <md-list-item class='md-1-line' ng-repeat="user in event.users track by $index">
+          <avatar user="user"></avatar>
+          <div class="md-list-item-text">
+            <h5>{{ user }}</h5>
+            <h6>12/11/02 8:10</h6>
+          </div>
+        </md-list-item>
+      </md-list>
+
+      <div ng-show="event.users.length == 0">
+        Ni prijavljenih.
+      </div>
+    </div>
+
+    <md-divider/>
+
+    <div class="frag-section">
+      <span>Comments</span>
     </div>
   </div>
+</md-whiteframe>

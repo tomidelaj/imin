@@ -42,4 +42,8 @@ angular.module('iminApp')
         groupId: $stateParams.groupId
       });
     };
+
+    $scope.addUser = function (event, user) {
+      event.users.push(user);
+    }
   });

@@ -4,6 +4,9 @@ angular.module('iminApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngAnimate',
+  'ngMessages',
+  'ngMaterial',
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap'
