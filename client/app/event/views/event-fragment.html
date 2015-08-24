@@ -27,7 +27,7 @@
         </md-input-container>
         <md-button class="md-raised md-primary" ng-click='addParticipant()'>I'm IN</md-button>
       </md-content>
-      <md-list flex layout-padding class='animate' ng-show="participants.length > 0" >
+      <md-list flex layout-padding class='animate' >
         <md-list-item layout='row' class='md-1-line animate' ng-repeat="participant in participants | orderBy:'-'">
 
           <avatar user="participant.name"></avatar>
@@ -39,10 +39,6 @@
             <ng-md-icon class='remove-icon' icon="highlight_remove" ng-click='removeParticipant(participant)'></ng-md-icon>
         </md-list-item>
       </md-list>
-
-      <div ng-show="participants.length == 0">
-        Ni prijavljenih.
-      </div>
     </div>
 
     <md-divider/>
