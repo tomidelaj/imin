@@ -45,5 +45,5 @@ angular.module('iminApp')
 
     $scope.addUser = function (event, user) {
       event.users.push(user);
-    }
+    };
   });

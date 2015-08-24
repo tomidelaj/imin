@@ -55,10 +55,17 @@ exports.destroy = function(req, res) {
   });
 };
 
-exports.messages = function(req, res) {
+exports.messagesIndex = function(req, res) {
   Message.findByEventId(req.params.id, function(err, messages) {
     if(err) { return handleError(res, err); }
     return res.json(messages);
+  });
+};
+
+exports.messageCreate = function(req, res) {
+  Message.create(req.body, function(err, event) {
+    if(err) { return handleError(res, err); }
+    return res.status(201).json(event);
   });
 };
 

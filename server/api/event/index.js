@@ -12,6 +12,7 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
-router.get('/:id/messages', controller.messages);
+router.get('/:id/messages', controller.messagesIndex);
+router.post('/:id/messages', controller.messageCreate);
 
 module.exports = router;

@@ -15,5 +15,12 @@
         <li>{{ message.sender }}: {{ message.message }}</li>
       </ul>
     </div>
+    <div class="col-xs-12">
+      <form>
+        <input type="text" ng-model="newMessage.sender" placeholder="Sender" autofocus />
+        <input type="text" ng-model="newMessage.message" placeholder="Message" />
+        <input type="submit" ng-click="sendMessage(newMessage)" value="Send" />
+      </form>
+    </div>
   </div>
 </div>
