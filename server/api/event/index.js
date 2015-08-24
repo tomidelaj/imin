@@ -17,5 +17,6 @@ router.post('/:id/messages', controller.messageCreate);
 
 router.get ('/:id/participants', controller.participantsList);
 router.post('/:id/participants', controller.participantsCreate);
+router.delete('/:id/participants/:participantId', controller.participantsDelete);
 
 module.exports = router;

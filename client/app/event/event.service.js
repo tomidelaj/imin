@@ -27,10 +27,11 @@ angular.module('iminApp').factory('EventMessageFactory', function($resource) {
 
 angular.module('iminApp').factory('EventParticipantFactory', function($resource) {
 
-  var baseUrl = 'api/events/:eventId/participants';
+  var baseUrl = 'api/events/:eventId/participants/:participantId';
 
   return function(eventId) {
     return $resource(baseUrl, {
+      participantId: '@_id',
       eventId: eventId
     });
   };

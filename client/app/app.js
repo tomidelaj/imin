@@ -7,6 +7,7 @@ angular.module('iminApp', [
   'ngAnimate',
   'ngMessages',
   'ngMaterial',
+  'ngMdIcons',
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap'

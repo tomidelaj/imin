@@ -84,6 +84,17 @@ exports.participantsCreate = function (req, res) {
   });
 };
 
+exports.participantsDelete = function (req, res) {
+  Participant.findById(req.params.participantId, function (err, participant) {
+    if(err) { return handleError(res, err); }
+    if(!participant) { return res.status(404).send('Not Found'); }
+    participant.remove(function(err) {
+      if(err) { return handleError(res, err); }
+      return res.status(204).send('No Content');
+    });
+  });
+};
+
 function handleError(res, err) {
   return res.status(500).send(err);
 }

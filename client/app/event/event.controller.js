@@ -46,10 +46,10 @@ angular.module('iminApp')
 
       newParticipant.$save();
       $scope.participantName = '';
-    }
+    };
 
     $scope.removeParticipant = function(participant) {
-      participant.$remove();
+      new EventParticipant(participant).$remove();
     };
 
   });
