@@ -2,8 +2,7 @@
 
 angular.module('iminApp')
   .directive('avatar', function() {
-    let colorMapping = {};
-
+    
     return {
       restrict: 'E',
       replace: true,
