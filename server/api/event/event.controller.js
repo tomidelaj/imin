@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var Event = require('./event.model');
 var Message = require('../message/message.model');
+var Participant = require('../participant/participant.model');
 
 // Get list of events
 exports.index = function(req, res) {
@@ -64,6 +65,20 @@ exports.messagesIndex = function(req, res) {
 
 exports.messageCreate = function(req, res) {
   Message.create(req.body, function(err, event) {
+    if(err) { return handleError(res, err); }
+    return res.status(201).json(event);
+  });
+};
+
+exports.participantsList = function (req, res) {
+  Participant.findByEventId(req.params.id, function(err, messages) {
+    if(err) { return handleError(res, err); }
+    return res.json(messages);
+  });
+};
+
+exports.participantsCreate = function (req, res) {
+  Participant.create(req.body, function(err, event) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(event);
   });

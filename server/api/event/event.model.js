@@ -4,9 +4,15 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var EventSchema = new Schema({
-  name: String,
-  date: Date,
-  users: [String],
+  name: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+    required: true
+  },
   group: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Group'

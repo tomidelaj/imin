@@ -24,3 +24,14 @@ angular.module('iminApp').factory('EventMessageFactory', function($resource) {
     });
   };
 });
+
+angular.module('iminApp').factory('EventParticipantFactory', function($resource) {
+
+  var baseUrl = 'api/events/:eventId/participants';
+
+  return function(eventId) {
+    return $resource(baseUrl, {
+      eventId: eventId
+    });
+  };
+});

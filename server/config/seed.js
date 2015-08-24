@@ -8,6 +8,7 @@
 var Group = require('../api/group/group.model');
 var Event = require('../api/event/event.model');
 var Message = require('../api/message/message.model');
+var Participant = require('../api/participant/participant.model');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 
@@ -21,8 +22,6 @@ Group.find({}).remove(function() {
   }, function (err, group) {
     Event.create({
       name: "Event 1",
-      date: new Date(),
-      users: ["Polutnik", "Hadalin"],
       group: group._id
     }, function (err, event){
       Message.create({
@@ -31,18 +30,25 @@ Group.find({}).remove(function() {
         date: new Date(),
         event: event._id
       });
+
+      Participant.create({
+        name: 'Jure Polutnik',
+        event: event._id
+      });
+
+      Participant.create({
+        name: 'Primoz Hadalin',
+        event: event._id
+      });
     });
 
     Event.create({
       name: "Event 2",
-      date: new Date(),
-      users: ["Polutnik"],
       group: group._id
     });
 
     Event.create({
       name: "Event 3",
-      date: new Date(),
       users: [],
       group: group._id
     });
@@ -56,7 +62,6 @@ Group.find({}).remove(function() {
     Event.create({
       name: "Event 1",
       date: new Date(),
-      users: ["Polutnik", "Hadalin"],
       group: group._id
     }, function(err, event) {
       Message.create({

@@ -1,4 +1,4 @@
-<md-whiteframe class="md-whiteframe-z3 event-frag" layout layout-align="">
+<md-whiteframe class="md-whiteframe-z3 event-frag" ng-controller="EventCtrl" layout layout-align="">
   <div layout="column" flex>
     <div class="frag-section" layout='row'>
       <div flex>
@@ -23,21 +23,21 @@
       <md-content layout-padding layout='row' layout-align='center end'>
         <md-input-container flex>
           <label>Name</label>
-          <input ng-model="user" type="text">
+          <input ng-model="participantName" type="text">
         </md-input-container>
-        <md-button class="md-raised md-primary" ng-click='addUser(event, user)'>I'm IN</md-button>
+        <md-button class="md-raised md-primary" ng-click='addParticipant()'>I'm IN</md-button>
       </md-content>
-      <md-list flex layout-padding ng-show="event.users.length > 0" >
-        <md-list-item class='md-1-line' ng-repeat="user in event.users track by $index">
-          <avatar user="user"></avatar>
+      <md-list flex layout-padding ng-show="participants.length > 0" >
+        <md-list-item class='md-1-line' ng-repeat="participant in participants track by $index">
+          <avatar user="participant.name"></avatar>
           <div class="md-list-item-text">
-            <h5>{{ user }}</h5>
-            <h6>12/11/02 8:10</h6>
+            <h5>{{ participant.name }}</h5>
+            <h6>{{ participant.date }}</h6>
           </div>
         </md-list-item>
       </md-list>
 
-      <div ng-show="event.users.length == 0">
+      <div ng-show="participants.length == 0">
         Ni prijavljenih.
       </div>
     </div>
