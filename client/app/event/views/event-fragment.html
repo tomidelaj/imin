@@ -1,50 +1,18 @@
-<md-whiteframe class="md-whiteframe-z3 event-frag" ng-controller="EventCtrl" layout layout-align="">
-  <div layout="column" flex>
-    <div class="frag-section" layout='row'>
-      <div flex>
-      <a href="/event/{{event._id}}"><h2> {{event.name}} </h3></a>
-      <h3> {{event.date}} </h3>
-      </div>
-      <div flex layout='column' layout-align='center center'>
-        <span>IN: 8, OUT:9</span>
-        <span>Commnets: 10</span>
-      </div>
-      <div class="" >
-      <a href="https://www.google.si/maps/search/Ljubljana, Rakuseva 24">
-      <img src='https://maps.googleapis.com/maps/api/staticmap?center=Ljubljana, Rakuseva 24&zoom=13&size=128x128'/>
-      </a>
-
-      </div>
-    </div>
-
-    <md-divider></md-divider>
-
-    <div class="frag-section" layout='column'>
-      <md-content layout-padding layout='row' layout-align='center end'>
-        <md-input-container flex>
-          <label>Name</label>
-          <input ng-model="participantName" type="text">
-        </md-input-container>
-        <md-button class="md-raised md-primary" ng-click='addParticipant()'>I'm IN</md-button>
-      </md-content>
-      <md-list flex layout-padding class='animate' >
-        <md-list-item layout='row' class='md-1-line animate' ng-repeat="participant in participants | orderBy:'-'">
-
-          <avatar user="participant.name"></avatar>
-          <div class="md-list-item-text">
-            <h5>{{ participant.name }}</h5>
-            <h6>{{ participant.date }}</h6>
-          </div>
-
-            <ng-md-icon class='remove-icon' icon="highlight_remove" ng-click='removeParticipant(participant)'></ng-md-icon>
-        </md-list-item>
-      </md-list>
-    </div>
-
-    <md-divider/>
-
-    <div class="frag-section">
-      <span>Comments</span>
-    </div>
+<div layout='row'>
+  <div flex>
+    <a href="/event/{{event._id}}">
+      <h2> {{event.name}} </h2>
+    </a>
+    <h3> {{event.date}} </h3>
   </div>
-</md-whiteframe>
+  <div flex layout='column' layout-align='center center'>
+    <span>IN: 8, OUT:9</span>
+    <span>Commnets: 10</span>
+  </div>
+  <div class="">
+    <a href="https://www.google.si/maps/search/Ljubljana, Rakuseva 24">
+      <img src='https://maps.googleapis.com/maps/api/staticmap?center=Ljubljana, Rakuseva 24&zoom=13&size=128x128' />
+    </a>
+
+  </div>
+</div>

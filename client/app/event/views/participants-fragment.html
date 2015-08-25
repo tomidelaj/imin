@@ -1,0 +1,21 @@
+<div layout='column' ng-controller='ParticipantsCtrl'>
+  <md-content layout-align='center end' layout-padding layout='row'>
+    <md-input-container flex>
+      <label>Name</label>
+      <input ng-model="participantName" type="text">
+    </md-input-container>
+    <md-button class="md-raised md-primary" ng-click='addParticipant()'>I'm IN</md-button>
+  </md-content>
+  <md-list class='animate' flex layout-padding>
+    <md-list-item class='md-1-line animate' layout='row' ng-repeat="participant in participants | orderBy:'-'">
+
+      <avatar user="participant.name"></avatar>
+      <div class="md-list-item-text">
+        <h5>{{ participant.name }}</h5>
+        <h6>{{ participant.date }}</h6>
+      </div>
+
+      <ng-md-icon class='remove-icon' icon="highlight_remove" ng-click='removeParticipant(participant)'></ng-md-icon>
+    </md-list-item>
+  </md-list>
+</div>

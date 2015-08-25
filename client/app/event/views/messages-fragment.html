@@ -1,0 +1,16 @@
+<div layout='column' ng-controller='MessagesCtrl'>
+  <div flex>
+    <h3>Messages</h3>
+    <ul ng-repeat="message in messages">
+      <li>{{ message.sender }}:
+        {{ message.message }}</li>
+    </ul>
+  </div>
+  <div flex>
+    <form>
+      <input ng-model="newMessage.sender" placeholder="Sender" type="text"/>
+      <input ng-model="newMessage.message" placeholder="Message" type="text"/>
+      <input ng-click="sendMessage(newMessage)" type="submit" value="Send"/>
+    </form>
+  </div>
+</div>
