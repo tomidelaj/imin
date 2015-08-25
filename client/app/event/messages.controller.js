@@ -7,6 +7,21 @@ angular.module('iminApp')
       var EventMessage = new EventMessageFactory($scope.event._id);
       $scope.messages = EventMessage.query();
       socket.syncUpdates('message', $scope.messages);
+
+      $scope.newMessage = {};
+      $scope.sendMessage = function(message) {
+
+        var newMessage = new EventMessage({
+          event: $scope.event._id,
+          sender: message.sender,
+          message: message.message,
+          date: new Date().toISOString() // TODO move date to server side
+        });
+
+        newMessage.$save();
+
+        $scope.newMessage = {};
+      };
     };
 
     if ($scope.event) {
@@ -17,18 +32,4 @@ angular.module('iminApp')
       });
     }
 
-    $scope.newMessage = {};
-    $scope.sendMessage = function(message) {
-
-      var newMessage = new EventMessage({
-        event: $scope.event._id,
-        sender: message.sender,
-        message: message.message,
-        date: new Date().toISOString() // TODO move date to server side
-      });
-
-      newMessage.$save();
-
-      $scope.newMessage = {};
-    };
   });
