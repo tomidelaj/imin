@@ -6,16 +6,16 @@
     </md-input-container>
     <md-button class="md-raised md-primary" ng-click='addParticipant()'>I'm IN</md-button>
   </md-content>
-  <md-list  flex layout-padding>
-    <md-list-item class='md-1-line animate' layout='row' ng-repeat="participant in participants | orderBy:'-'">
+  <md-list>
+    <md-list-item layout='row' class='md-1-line animate' layout='row' ng-repeat="participant in participants | orderBy:'-'">
 
       <avatar user="participant.name"></avatar>
-      <div class="md-list-item-text">
+      <div flex class="md-list-item-text">
         <h5>{{ participant.name }}</h5>
-        <h6>{{ participant.date }}</h6>
+        <h6 am-time-ago='participant.date'></h6>
       </div>
 
-      <ng-md-icon class='remove-icon' icon="highlight_remove" ng-click='removeParticipant(participant)'></ng-md-icon>
+      <ng-md-icon flex class='remove-icon' icon="highlight_remove" ng-click='removeParticipant(participant)'></ng-md-icon>
     </md-list-item>
   </md-list>
 </div>

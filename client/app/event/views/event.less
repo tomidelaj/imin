@@ -34,16 +34,6 @@
   }
 }
 
-//
-// Partiipant list item Animations
-//
-.transition (@transition) {
-  -webkit-transition: @transition;
-  -moz-transition: @transition;
-  -ms-transition: @transition;
-  -o-transition: @transition;
-}
-
 .animate.ng-enter {
     .transition(0.3s linear all);
     max-height: 0px;
@@ -60,6 +50,7 @@
     top: 0;
     left: 0;
 }
+
 @keyframes leave_animation {
   from {
     max-height: 60px;

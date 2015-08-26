@@ -1,21 +1,26 @@
-<section ng-controller="EventCtrl" data-ng-init="initEvent()">
-<md-whiteframe class="md-whiteframe-z3 event-frag" layout layout-align="" >
-  <div flex layout="column">
-    <div class="frag-section">
-      <div ng-include="'app/event/views/event-fragment.html'"></div>
+<section data-ng-init="initEvent()" ng-controller="EventCtrl">
+  <md-whiteframe class="md-whiteframe-z5 event-frag" layout layout-align="">
+    <div flex layout="column">
+      <div class="frag-section">
+        <div ng-include="'app/event/views/event-fragment.html'"></div>
+      </div>
+
+      <md-divider></md-divider>
+
+      <div layout='row'>
+        <div class="frag-section" flex='40'>
+          <h3>Participants</h3>
+          <div ng-include="'app/event/views/participants-fragment.html'"></div>
+        </div>
+        <div flex='5'> </div>
+        <div class="frag-section" flex>
+          <h3>Chat</h3>
+          <div ng-include="'app/event/views/messages-fragment.html'"></div>
+        </div>
+      </div>
+
+      <md-divider></md-divider>
+
     </div>
-
-    <md-divider></md-divider>
-
-    <div class="frag-section">
-      <div ng-include="'app/event/views/participants-fragment.html'"></div>
-    </div>
-
-    <md-divider></md-divider>
-
-    <div class="frag-section">
-      <div ng-include="'app/event/views/messages-fragment.html'"></div>
-    </div>
-  </div>
-</md-whiteframe>
+  </md-whiteframe>
 </section>
