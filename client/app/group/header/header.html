@@ -1,15 +1,17 @@
-<header flex layout='column' scroll-class='smaller' class="header-group">
+<section ng-controller='HeaderCtrl'>
+  <header class="header-group" flex layout='column' scroll-class='smaller'>
 
-<div flex>
-      <h1 id='logo' class='smaller'>Group - {{ group.slug }}</h1>
-</div>
-<div flex layout='row' layout-align='center end'>
-      <nav >
-        <md-button ng-href="" class='active'>Pending</md-button>
-        <md-button ng-href="">Active</md-button>
-        <md-button ng-href="">History</md-button>
+    <div flex>
+      <h1 class='smaller' id='logo'>Group -
+        {{ group.slug }}</h1>
+    </div>
+    <div flex layout-align='center end' layout='row'>
+      <nav>
+        <md-button ng-repeat='item in menu' ng-class='{active: isActive(item.link)}' ng-href="{{item.link}}">{{item.title}}</md-button>
       </nav>
 
-</div>
+    </div>
 
-</header>
+  </header>
+
+</section>

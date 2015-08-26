@@ -1,6 +1,7 @@
 <div layout='row'>
   <div flex>
-    <a href="/event/{{event._id}}">
+    <!-- TODO: Find better solution - hardcoded group.event state -->
+    <a ui-sref="group.event({eventId:event._id})" >
       <h2> {{event.name}} </h2>
     </a>
     <h3> {{event.date}} </h3>
@@ -9,7 +10,7 @@
     <span>IN: 8, OUT:9</span>
     <span>Commnets: 10</span>
   </div>
-  <div class="">
+  <div class="animate">
     <a href="https://www.google.si/maps/search/Ljubljana, Rakuseva 24">
       <img src='https://maps.googleapis.com/maps/api/staticmap?center=Ljubljana, Rakuseva 24&zoom=13&size=128x128' />
     </a>

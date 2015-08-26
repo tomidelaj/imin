@@ -31,19 +31,15 @@ angular.module('iminApp')
     };
 
 
-    $scope.findOne = function () {
+    $scope.initData = function () {
       $scope.group = Groups.get({
         groupId: $stateParams.groupId
       });
-    };
 
-    $scope.findEvents = function () {
-      $scope.events = Groups.events({
+      Groups.events({
         groupId: $stateParams.groupId
+      }).$promise.then(function(events){
+        $scope.events = events;
       });
-    };
-
-    $scope.addUser = function (event, user) {
-      event.users.push(user);
     };
   });
