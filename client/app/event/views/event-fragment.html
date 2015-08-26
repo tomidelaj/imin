@@ -1,10 +1,10 @@
-<div layout='row'>
+<div flex layout='row'>
   <div flex>
     <!-- TODO: Find better solution - hardcoded group.event state -->
     <a ui-sref="group.event({eventId:event._id})" >
       <h2> {{event.name}} </h2>
     </a>
-    <h3> {{event.date}} </h3>
+    <h4> {{event.date | amDateFormat:'dddd hh:mm, MMMM Do'}} </h4>
   </div>
   <div flex layout='column' layout-align='center center'>
     <span>IN: 8, OUT:9</span>
@@ -12,7 +12,7 @@
   </div>
   <div class="animate">
     <a href="https://www.google.si/maps/search/Ljubljana, Rakuseva 24">
-      <img src='https://maps.googleapis.com/maps/api/staticmap?center=Ljubljana, Rakuseva 24&zoom=13&size=128x128' />
+      <img src='https://maps.googleapis.com/maps/api/staticmap?center=Ljubljana, Rakuseva 24&zoom=13&size=90x90' />
     </a>
 
   </div>
