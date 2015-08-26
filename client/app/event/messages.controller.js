@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('MessagesCtrl', function($scope, socket, EventMessageFactory) {
+  .controller('MessagesCtrl', function($scope, EventMessageSocket, EventMessageFactory) {
 
     var init = function() {
       var EventMessage = new EventMessageFactory($scope.event._id);
       $scope.messages = EventMessage.query();
-      socket.syncUpdates('message', $scope.messages);
+      EventMessageSocket.syncUpdates($scope.event._id, $scope.messages);
 
       $scope.newMessage = {};
       $scope.sendMessage = function(message) {
