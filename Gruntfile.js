@@ -430,9 +430,9 @@ module.exports = function (grunt) {
       },
       dist: [
         'babel',
-        'less'
-        //'imagemin'
-        //'svgmin'
+        'less',
+        'imagemin',
+        'svgmin'
       ]
     },
 
