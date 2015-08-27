@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('ParticipantsCtrl', function($scope, socket, EventParticipantFactory) {
+  .controller('ParticipantsCtrl', function($scope, socket, EventSocket, EventParticipantFactory) {
     var init = function() {
       var EventParticipant = new EventParticipantFactory($scope.event._id);
       $scope.participants = EventParticipant.query();
-      socket.syncUpdates('participant', $scope.participants);
+      EventSocket.syncUpdates($scope.event._id, 'participant', $scope.participants);
 
       $scope.addParticipant = function() {
         var newParticipant = new EventParticipant({
