@@ -4,7 +4,6 @@ angular.module('iminApp')
   .controller('HeaderCtrl', function($scope, $location, $state, Auth) {
 
     var init = function() {
-      var baseUrl = '/group/' + $scope.group._id;
       $scope.menu = [{
         'title': 'Upcoming',
         'link': $state.href('group.upcoming', {groupId: $scope.group._id})

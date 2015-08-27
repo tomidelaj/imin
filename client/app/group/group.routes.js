@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('iminApp')
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider) {
     $stateProvider
       .state('group', {
         url: '/group/:groupId',

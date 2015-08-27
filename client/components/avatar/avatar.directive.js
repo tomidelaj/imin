@@ -2,7 +2,7 @@
 
 angular.module('iminApp')
   .directive('avatar', function() {
-    
+
     return {
       restrict: 'E',
       replace: true,
@@ -12,6 +12,7 @@ angular.module('iminApp')
       templateUrl: 'components/avatar/avatar.html',
       link: function($scope) {
 
+        /*jslint bitwise: true */
         function stringToColor(str) {
 
           var hash = 0;
