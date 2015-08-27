@@ -1,8 +1,17 @@
 language: node_js
 node_js:
-  - '0.10'
-  - '0.11'
+- '0.10'
+- '0.11'
 before_script:
-  - npm install -g bower grunt-cli
-  - bower install
+- npm install -g bower grunt-cli
+- bower install
 services: mongodb
+deploy:
+  provider: openshift
+  user: jure.polutnik@gmail.com
+  password:
+    secure: esIbbKVqB9PfXPnyhQ+P3rJsWsTHd1IKtAto5DzVUe/VvEo0JCs+DwxjnfRMAP8SiAtN+5x0YVpbXATzn1o42H2zYr7khTJl0xEHkmy5uowAYa5NgeyCwRQ8KdiZ3pZxUNUxwWCkDpL4izZfjBcS4wWBu0eceabuFD9xX2IbsyjIu2q4yXGiHRxX0AGPGonroYWcSbMHfBtAMyq4WT7mMEEHOBmvIPKaEUmgIVzAZ1Qva6UffT0sxL3aAmklnuk5jT2HlPBrqzZauOxIIidRxNTTUxTRLdeHXITW4nEv3Y7KavuP0cty0tjFYibP2xs91k+7fecL22OleTUomgcZhLX0j1swxdBULyWp/abV9v1E2/6Ps+LPAPM2GyXsMrtVpeIjFYYxLkjg5qK7LG8f1IJGPB2KlNcSnmPyw8D6NQCXQGa7BjdLNBjeL+BXMiUMapOKGT3BLzAEJgWGPIjeaEPkM/yEGKaxKLIB5dsi/l/zS+r9HWr8UWbB0Zuidr+SlE2mUsaOAPBaEDONKE+Iue9PbugBmjj2D0JbyaAnulG/qlVZtI+Ztrp+K3aFXe72mRsgIUsIWEfQZGsOc1xIxhoxGuTnhvR09pNP94ZmPbzZbmtUVc/TnaU5SKl13xqQ1PfeX7H+P90Jl1JLjTQUNmBOZg3xarvtBl848abKzAw=
+  app: imin2
+  domain: imin2-tomidelaj.rhcloud.com
+  on:
+    repo: tomidelaj/imin
