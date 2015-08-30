@@ -37,6 +37,7 @@ exports.update = function(req, res) {
   });
 };
 
+
 // Deletes a group from the DB.
 exports.destroy = function(req, res) {
   req.group.remove(function (err) {
@@ -50,6 +51,14 @@ exports.events = function(req, res) {
   Event.findByGroupId(req.params.id, function(err, events){
     if(err) { return handleError(res, err); }
     return res.json(events);
+  });
+};
+
+exports.findBySlug = function(req, res){
+  Group.findBySlug(req.params.slug, function (err, group) {
+    if(err) { return next(); }
+    if(!group) { return res.status(404).send('Not Found'); }
+    return res.json(group);
   });
 };
 
@@ -67,6 +76,7 @@ exports.groupById = function(req, res, next, id){
     next();
   });
 };
+
 
 
 function handleError(res, err) {

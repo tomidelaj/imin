@@ -20,4 +20,10 @@ var GroupSchema = new Schema({
 GroupSchema.path('slug').validate(validators.validateSlug,
   'Slug validation failed');
 
+GroupSchema.statics.findBySlug = function(slug, cb) {
+  return this.findOne({
+    slug: slug
+  }, cb);
+};
+
 module.exports = mongoose.model('Group', GroupSchema);
