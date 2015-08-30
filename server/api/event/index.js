@@ -12,11 +12,9 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
-router.get ('/:id/messages', controller.messagesIndex);
-router.post('/:id/messages', controller.messageCreate);
+router.use('/:id/participants', require('../participant'));
+router.use('/:id/messages', require('../message'));
 
-router.get ('/:id/participants', controller.participantsList);
-router.post('/:id/participants', controller.participantsCreate);
-router.delete('/:id/participants/:participantId', controller.participantsDelete);
+router.param('id', controller.eventById);
 
 module.exports = router;
