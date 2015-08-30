@@ -40,7 +40,7 @@ exports.update = function(req, res) {
   var updated = _.merge(message, req.body);
   updated.save(function(err) {
     if (err) { return handleError(res, err); }
-    return res.status(200).json(message);
+    return res.status(200).json(updated);
   });
 };
 

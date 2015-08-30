@@ -36,7 +36,7 @@ exports.update = function(req, res) {
   var updated = _.merge(participant, req.body);
   updated.save(function (err) {
       if (err) { return handleError(res, err); }
-      return res.status(200).json(participant);
+      return res.status(200).json(updated);
   });
 };
 
