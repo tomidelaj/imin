@@ -64,7 +64,7 @@ exports.pending = function(req, res) {
 
 exports.findBySlug = function(req, res){
   Group.findBySlug(req.params.slug, function (err, group) {
-    if(err) { return next(); }
+    if(err) { return handleError(res, err); }
     if(!group) { return res.status(404).send('Not Found'); }
     return res.json(group);
   });
