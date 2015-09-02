@@ -18,6 +18,14 @@ angular.module('iminApp')
     return {
       socket: socket,
 
+      join: function (room) {
+        socket.emit('join', room);
+      },
+
+      leave: function (room) {
+        socket.emit('leave', room);
+      },
+
       /**
        * Register listeners to sync an array with updates on a model
        *

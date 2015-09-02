@@ -6,19 +6,20 @@
 
 var Participant = require('./participant.model');
 
-exports.register = function(socket) {
+exports.register = function(io) {
   Participant.schema.post('save', function (doc) {
-    onSave(socket, doc);
+    onSave(io, doc);
   });
   Participant.schema.post('remove', function (doc) {
-    onRemove(socket, doc);
+    onRemove(io, doc);
   });
 }
 
-function onSave(socket, doc, cb) {
-  socket.emit('event:' + doc.event.toString() + ':participant:save', doc);
+function onSave(io, doc, cb) {
+  console.log('Event:  '+doc.event.toString());
+  io.to(doc.event.toString()).emit('participant:save', doc);
 }
 
-function onRemove(socket, doc, cb) {
-  socket.emit('event:' + doc.event.toString() + ':participant:remove', doc);
+function onRemove(io, doc, cb) {
+  io.to(doc.event.toString()).emit('participant:remove', doc);
 }

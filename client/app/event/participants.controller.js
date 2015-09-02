@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('ParticipantsCtrl', function($scope, socket, EventSocket, EventParticipantFactory) {
+  .controller('ParticipantsCtrl', function($scope, socket, EventParticipantFactory) {
     var init = function() {
       var EventParticipant = new EventParticipantFactory($scope.event._id);
       $scope.participants = EventParticipant.query();
-      EventSocket.syncUpdates($scope.event._id, 'participant', $scope.participants);
+      socket.syncUpdates('participant', $scope.participants);
 
       $scope.addParticipant = function() {
         var newParticipant = new EventParticipant({
@@ -22,11 +22,19 @@ angular.module('iminApp')
       };
     };
 
-    if ($scope.event) {
-      init();
-    } else {
-      $scope.$watch('event', function() {
-        init();
-      });
+    var onDestroy = function () {
+      socket.unsyncUpdates('message');
+    };
+
+    if ($scope.event.$promise)
+    {
+      $scope.event.$promise.then(function (){
+          init();
+        });
     }
+    else {
+      init();
+    }
+
+    $scope.$on('$destroy', onDestroy);
   });

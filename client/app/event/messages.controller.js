@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('MessagesCtrl', function($scope, EventSocket, EventMessageFactory) {
+  .controller('MessagesCtrl', function($scope, socket, EventMessageFactory) {
 
     var init = function() {
       var EventMessage = new EventMessageFactory($scope.event._id);
       $scope.messages = EventMessage.query();
-      EventSocket.syncUpdates($scope.event._id, 'message', $scope.messages);
+      socket.syncUpdates('message', $scope.messages);
 
       $scope.newMessage = {};
       $scope.sendMessage = function(message) {
@@ -24,12 +24,19 @@ angular.module('iminApp')
       };
     };
 
-    if ($scope.event) {
+    var onDestroy = function () {
+      socket.unsyncUpdates('message');
+    };
+
+    if ($scope.event.$promise)
+    {
+      $scope.event.$promise.then(function (){
+          init();
+        });
+    }
+    else {
       init();
-    } else {
-      $scope.$watch('event', function() {
-        init();
-      });
     }
 
+    $scope.$on('$destroy', onDestroy);
   });

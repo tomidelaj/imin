@@ -12,17 +12,26 @@ function onDisconnect(socket) {
 
 // When the user connects.. perform this
 function onConnect(socket) {
-  // When the client emits 'info', this listens and executes
-  socket.on('info', function (data) {
-    console.info('[%s] %s', socket.address, JSON.stringify(data, null, 2));
+
+  socket.on('join', function(doc) {
+    onJoinRoom(socket, doc)
   });
 
-  // Insert sockets below
-  require('../api/participant/participant.socket').register(socket);
-  require('../api/message/message.socket').register(socket);
-  require('../api/event/event.socket').register(socket);
-  require('../api/group/group.socket').register(socket);
-  require('../api/thing/thing.socket').register(socket);
+  socket.on('leave', function(doc) {
+    onLeaveRoom(socket, doc)
+  });
+}
+
+function onJoinRoom (socket, eventId)
+{
+    socket.join(eventId);
+    socket.broadcast.to(eventId).emit('addUser', socket.username);
+}
+
+function onLeaveRoom (socket, eventId)
+{
+    socket.leave(eventId);
+    socket.broadcast.to(eventId).emit('removeUser', socket.username);
 }
 
 module.exports = function (socketio) {
@@ -40,6 +49,11 @@ module.exports = function (socketio) {
   //   secret: config.secrets.session,
   //   handshake: true
   // }));
+
+  require('../api/participant/participant.socket').register(socketio);
+  require('../api/message/message.socket').register(socketio);
+  require('../api/event/event.socket').register(socketio);
+  require('../api/group/group.socket').register(socketio);
 
   socketio.on('connection', function (socket) {
     socket.address = socket.handshake.address !== null ?

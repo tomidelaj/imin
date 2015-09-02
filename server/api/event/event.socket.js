@@ -6,19 +6,27 @@
 
 var Event = require('./event.model');
 
-exports.register = function(socket) {
+exports.register = function(io) {
   Event.schema.post('save', function (doc) {
-    onSave(socket, doc);
+    onSave(io, doc);
   });
   Event.schema.post('remove', function (doc) {
-    onRemove(socket, doc);
+    onRemove(io, doc);
+  });
+
+  Event.schema.post('update', function (doc) {
+    onRemove(io, doc);
   });
 }
 
-function onSave(socket, doc, cb) {
-  socket.emit('event:save', doc);
+function onSave(io, doc, cb) {
+  io.emit('event:save', doc);
 }
 
-function onRemove(socket, doc, cb) {
-  socket.emit('event:remove', doc);
+function onRemove(io, doc, cb) {
+  io.emit('event:remove', doc);
+}
+
+function onUpdate(io, doc, cb) {
+  io.to(doc._id).emit('event:update', doc);
 }
