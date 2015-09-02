@@ -14,6 +14,11 @@ angular.module('iminApp').factory('Groups', function($resource) {
       url: baseUrl + '/events',
       method: 'GET',
       isArray: true
+    },
+    pending: {
+      url: baseUrl + '/events/pending',
+      method: 'GET',
+      isArray: false
     }
   });
 });

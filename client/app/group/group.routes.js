@@ -30,6 +30,6 @@ angular.module('iminApp')
       .state('groups', {
         url: '/group',
         templateUrl: 'app/group/views/groups.html',
-        controller: 'GroupCtrl'
+        controller: 'GroupListCtrl'
       });
   });
