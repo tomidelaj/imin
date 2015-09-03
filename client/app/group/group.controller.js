@@ -1,7 +1,17 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('GroupCtrl', function($scope, $location, $stateParams, Groups) {
+  .controller('GroupCtrl', function($scope, $location, $stateParams, Groups, ngDialog) {
+
+    $scope.createEvent = function()
+    {
+      ngDialog.open({
+        template: '<h1>Create event</h1><span>Yeah...</span></h1>',
+        //controller: 'asdf',
+        showClose:false,
+        plain: true
+      });
+    }
 
     $scope.group = Groups.get({
       groupId: $stateParams.groupId

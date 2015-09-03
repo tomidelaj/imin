@@ -19,6 +19,7 @@
     "font-awesome": ">=4.1.0",
     "json3": "~3.3.1",
     "lodash": "~2.4.1",
+    "ngDialog": "~0.5.1",
     "svg-morpheus": "~0.1.8"
   },
   "devDependencies": {
