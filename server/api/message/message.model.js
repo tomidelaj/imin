@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
+  Event = require('../event/event.model'),
   validators = require('../../components/validators/validators');
 
 var MessageSchema = new Schema({
@@ -32,5 +33,17 @@ MessageSchema.statics.findByEventId = function(eventId, cb) {
     event: new mongoose.Types.ObjectId(eventId)
   }, cb);
 };
+
+MessageSchema.post('save', function (doc) {
+  Event.where({_id: doc.event}).update({$inc: {"stats.messages": 1}}, function(err){
+    if (err) throw err;
+  });
+});
+
+MessageSchema.post('remove', function (doc) {
+  Event.where({_id: doc.event}).update({$inc: {"stats.messages": -1}}, function(err){
+    if (err) throw err;
+  });
+});
 
 module.exports = mongoose.model('Message', MessageSchema);

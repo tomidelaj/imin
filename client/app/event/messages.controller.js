@@ -18,7 +18,9 @@ angular.module('iminApp')
           date: new Date().toISOString() // TODO move date to server side
         });
 
-        newMessage.$save();
+        newMessage.$save(function(){
+          $scope.event.stats.messages ++;
+        });
 
         $scope.newMessage = {};
       };

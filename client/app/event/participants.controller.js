@@ -17,12 +17,16 @@ angular.module('iminApp')
 
         $cookies.put('participantName', $scope.participantName);
 
-        newParticipant.$save();
+        newParticipant.$save(function () {
+          $scope.event.stats.participants ++;
+        });
         $scope.participantName = '';
       };
 
       $scope.removeParticipant = function(participant) {
-        new EventParticipant(participant).$remove();
+        new EventParticipant(participant).$remove(function(){
+          $scope.event.stats.participants --;
+        });
       };
     };
 

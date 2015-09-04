@@ -13,6 +13,10 @@ var EventSchema = new Schema({
     default: Date.now,
     required: true
   },
+  stats: { // Updated by ref. models (Participant, Message)
+    participants: {type: Number, default:0},
+    messages: {type: Number, default:0}
+  },
   group: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Group'

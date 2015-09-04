@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
+    Event = require('../event/event.model'),
     Schema = mongoose.Schema;
 
 var ParticipantSchema = new Schema({
@@ -29,5 +30,19 @@ ParticipantSchema.statics.findByEventId = function(eventId, cb) {
     event: new mongoose.Types.ObjectId(eventId)
   }, cb);
 };
+
+ParticipantSchema.post('save', function (doc) {
+  Event.where({_id: doc.event}).update({$inc: {"stats.participants": 1}}, function(err){
+    if (err) throw err;
+  });
+});
+
+ParticipantSchema.post('remove', function (doc) {
+  Event.where({_id: doc.event}).update({$inc: {"stats.participants": -1}}, function(err){
+    if (err) throw err;
+  });
+});
+
+
 
 module.exports = mongoose.model('Participant', ParticipantSchema);

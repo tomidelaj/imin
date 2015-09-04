@@ -7,8 +7,8 @@
     <h4> {{event.date | amDateFormat:'dddd hh:mm, MMMM Do'}} </h4>
   </div>
   <div flex layout='column' layout-align='center center'>
-    <span>IN: 8, OUT:9</span>
-    <span>Commnets: 10</span>
+    <span>IN: {{event.stats.participants}}, OUT:9</span>
+    <span>Commnets: {{event.stats.messages}}</span>
   </div>
   <div class="animate">
     <a href="https://www.google.si/maps/search/Ljubljana, Rakuseva 24">
