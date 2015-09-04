@@ -6,9 +6,9 @@
     </a>
     <h4> {{event.date | amDateFormat:'dddd hh:mm, MMMM Do'}} </h4>
   </div>
-  <div flex layout='column' layout-align='center center'>
-    <span>IN: {{event.stats.participants}}, OUT:9</span>
-    <span>Commnets: {{event.stats.messages}}</span>
+  <div class='stats' flex layout='row' layout-align='center center'>
+    <span><ng-md-icon flex icon="directions_walk" class='stats-icon'></ng-md-icon> {{event.stats.participants}}</span>
+    <span><ng-md-icon flex icon="comment" class='stats-icon'></ng-md-icon> {{event.stats.messages}}</span>
   </div>
   <div class="animate">
     <a href="https://www.google.si/maps/search/Ljubljana, Rakuseva 24">
