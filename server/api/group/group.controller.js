@@ -7,9 +7,10 @@ var Event = require('../event/event.model');
 
 // Get list of groups
 exports.list = function(req, res) {
-  Group.find(function (err, groups) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(groups);
+  // TODO: search query checks
+  Group.find(req.query,function (err, groups) {
+      if(err) { return handleError(res, err); }
+      return res.status(200).json(groups);
   });
 };
 
@@ -59,14 +60,6 @@ exports.pending = function(req, res) {
   Event.findByGroupId(req.params.id, function(err, events){
     if(err) { return handleError(res, err); }
     return res.json(events[0]);
-  });
-};
-
-exports.findBySlug = function(req, res){
-  Group.findBySlug(req.params.slug, function (err, group) {
-    if(err) { return handleError(res, err); }
-    if(!group) { return res.status(404).send('Not Found'); }
-    return res.json(group);
   });
 };
 
