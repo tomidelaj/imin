@@ -31,5 +31,15 @@ angular.module('iminApp')
         url: '/group',
         templateUrl: 'app/group/views/groups.html',
         controller: 'GroupListCtrl'
+      })
+      .state('slug', {
+        url: '^/g/:slug',
+        controller: function($state, $stateParams, Groups){
+          Groups.query({
+            slug: $stateParams.slug
+          }).$promise.then(function(g){
+            $state.go('group.upcoming', {groupId:g[0]._id});
+          });
+        }
       });
   });
