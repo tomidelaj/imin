@@ -18,25 +18,23 @@ angular.module('iminApp')
           date: new Date().toISOString() // TODO move date to server side
         });
 
-        newMessage.$save(function(){
-          $scope.event.stats.messages ++;
+        newMessage.$save(function() {
+          $scope.event.stats.messages++;
         });
 
         $scope.newMessage = {};
       };
     };
 
-    var onDestroy = function () {
+    var onDestroy = function() {
       socket.unsyncUpdates('message');
     };
 
-    if ($scope.event.$promise)
-    {
-      $scope.event.$promise.then(function (){
-          init();
-        });
-    }
-    else {
+    if ($scope.event.$promise) {
+      $scope.event.$promise.then(function() {
+        init();
+      });
+    } else {
       init();
     }
 
