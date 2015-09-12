@@ -1,7 +1,14 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('MainCtrl', function ($scope, $http, $location, Groups) {
+  .controller('MainCtrl', function ($scope, $mdDialog, $location, ngDialog, Groups) {
+
+    $scope.createGroupDialog = function() {
+      $mdDialog.show({
+        templateUrl: 'app/group/views/group-create-modal.html',
+        controller: 'GroupCreateCtrl'
+      });
+    };
 
     $scope.createGroup = function () {
       var group = new Groups({
