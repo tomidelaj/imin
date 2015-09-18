@@ -1,0 +1,28 @@
+<md-dialog>
+  <md-dialog-content>
+    <h2>Create group</h2>
+
+    <md-input-container flex>
+      <label>Name</label>
+      <input ng-model="model.name" type="text">
+    </md-input-container>
+
+    <md-input-container flex>
+      <label>Location</label>
+      <input ng-model="model.location" type="text">
+    </md-input-container>
+
+    <md-input-container flex>
+
+      <label>Email</label>
+      <input ng-model="model.email" type="email">
+    </md-input-container>
+
+  </md-dialog-content>
+
+  <div class="md-actions">
+    <md-button class="md-primary" ng-click="closeDialog()">
+      Create
+    </md-button>
+  </div>
+</md-dialog>
