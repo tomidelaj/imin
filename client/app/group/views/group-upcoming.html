@@ -1,3 +1,4 @@
-<section ng-init='event=pending'>
-  <div ng-include="'app/event/views/event.html'"></div>
+<section ng-init='event=getPending()'>
+  <div ng-show='event._id' ng-include="'app/event/views/event.html'"></div>
+  <div ng-hide='event._id' ng-include="'app/group/views/group-events-empty.html'"></div>
 </section>

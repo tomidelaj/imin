@@ -59,7 +59,7 @@ exports.pending = function(req, res) {
   // Monkey solution... TODO: fix this.
   Event.findByGroupId(req.params.id, function(err, events){
     if(err) { return handleError(res, err); }
-    return res.json(events[0]);
+    return res.json(events[events.length-1]);
   });
 };
 

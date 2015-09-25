@@ -1,38 +1,58 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Aleeee, 'Ale!</h1>
-    <p class="lead">Create your awesome gay club.</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Create group</h1>
-            <button type="submit" class="btn btn-primary" ng-click="createGroupDialog()">Create</button>
-
-      <!--form class="group-form">
-        <p class="input-group">
-          <input type="text" class="form-control" placeholder="Create a new group here." ng-model="newGroup">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary" ng-click="createGroupDialog()">Create</button>
-          </span>
+<div class='landing' layout='column'>
+  <div class='section' layout-align='center center' layout='column'>
+    <div class='hero' layout-align='center center' layout='column'>
+      <h1>Simple, beautiful grouping.</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+      </p>
+      <div>
+        <md-button class="btn-create md-raised" ng-click="createGroupDialog()" type="submit">Create</md-button>
+      </div>
+    </div>
+    <div class='sub-section' layout-align='space-around center' layout='row'>
+      <div>
+        <img alt="clock face" height="42" src="https://d35pdk54ela7r.cloudfront.net/assets/landing/homepage/home-icon-time-6202c883fbe2531dd7de66d453aa5bb0.png" width="42">
+        <p>
+          <strong>Connect</strong>
         </p>
-      </form>
-      <div data-ng-show="error" class="text-danger">
-        <strong data-ng-bind="error"></strong>
-      </div-->
+        <p>Lorem impsum dolor sit amet.</p>
+      </div>
+      <div>
+        <img alt="clock face" height="42" src="https://d35pdk54ela7r.cloudfront.net/assets/landing/homepage/home-icon-sales-0967a799d33742666e3a55fed80737f4.png" width="42">
+        <p>
+          <strong>Communicate</strong>
+        </p>
+        <p>Lorem impsum dolor sit amet.</p>
+      </div>
+      <div>
+        <img alt="clock face" height="42" src="https://d35pdk54ela7r.cloudfront.net/assets/landing/homepage/home-icon-service-4e2093390907ec105c2125af59b156a0.png" width="42">
+        <p>
+          <strong>Save Time</strong>
+        </p>
+        <p>Lorem impsum dolor sit amet.</p>
+      </div>
+
     </div>
   </div>
-</div>
 
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.1.1 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+  <div class='section'>
+    <div class='hero' layout-align='center center' layout='column'>
+
+      <h2>How it works.</h2>
+      <img src="http://placehold.it/550x350" style="padding:50px">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
   </div>
-</footer>
+
+  <div class='footer' layout-align='center end' layout='column'>
+    <h4>
+      imin v0.0.1
+      <a href="https://github.com/tomidelaj/imin" style="padding:10px">
+        Github
+      </a>
+    </h4>
+  </div>
+</div>

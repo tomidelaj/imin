@@ -57,20 +57,7 @@ Group.find({}).remove(function() {
     name : 'Basket (Xlab)',
     slug : 'basket',
     description : '...'
-  }, function (err, group) {
-    Event.create({
-      name: "Event 1",
-      date: new Date(),
-      group: group._id
-    }, function(err, event) {
-      Message.create({
-        sender: 'Mario',
-        message: 'Prneste žogo',
-        date: new Date(),
-        event: event._id
-      });
-    });
-  });
+  }, function (err, group) {});
 });
 
 User.find({}).remove(function() {
