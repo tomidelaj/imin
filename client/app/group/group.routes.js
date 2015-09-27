@@ -3,35 +3,38 @@
 angular.module('iminApp')
   .config(function ($stateProvider) {
     $stateProvider
+
+      // Group routing
       .state('group', {
         url: '/group/:groupId',
         abstract: true,
-        redirectTo: 'group.pending',
-        templateUrl: 'app/group/views/group.html',
+        templateUrl: 'app/group/view/group.html',
         controller: 'GroupCtrl'
       })
-
       .state('group.upcoming', {
         url: '',
-        templateUrl: 'app/group/views/group-upcoming.html',
+        templateUrl: 'app/group/view/state-upcoming-event.html',
       })
       .state('group.active', {
         url: '/active',
-        templateUrl: 'app/group/views/group-active.html',
+        templateUrl: 'app/group/view/state-active-events.html',
       })
       .state('group.history', {
         url: '/history',
-        templateUrl: 'app/group/views/group-history.html',
+        templateUrl: 'app/group/view/state-history-events.html',
       })
       .state('group.event', {
         url: '/event/:eventId',
-        templateUrl: 'app/group/views/group-event.html',
+        templateUrl: 'app/group/view/state-selected-event.html',
       })
+
+
       .state('groups', {
-        url: '/group',
-        templateUrl: 'app/group/views/groups.html',
+        url: '/groups',
+        templateUrl: 'app/group/list/groups.html',
         controller: 'GroupListCtrl'
       })
+
       .state('slug', {
         url: '^/g/:slug',
         controller: function($state, $stateParams, Groups){

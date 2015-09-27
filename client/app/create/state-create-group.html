@@ -1,0 +1,22 @@
+<section layout='column'>
+
+  <h1>Create Group</h1>
+
+    <md-input-container flex>
+      <label>Name</label>
+      <input ng-model="model.name" type="text">
+    </md-input-container>
+
+    <md-input-container flex>
+        <label>Description</label>
+        <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>
+    </md-input-container>
+
+    <md-input-container>
+      <label>Link</label>
+      <input ng-model="model.link" type="text">
+    </md-input-container>
+
+    <md-button class="btn-create md-raised" ng-click="createGroup()" type="submit">Create</md-button>
+
+</section>

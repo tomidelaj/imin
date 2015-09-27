@@ -4,16 +4,12 @@ angular.module('iminApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [
       {
-        'title': 'Home',
-        'link': '/'
+        'title': 'Features',
+        'link' : '/pages/features'
       },
       {
-        'title': 'Groups',
-        'link' : '/group'
-      },
-      {
-        'title': 'Events',
-        'link' : '/event'
+        'title': 'Start',
+        'link' : '/create'
       }
     ];
 

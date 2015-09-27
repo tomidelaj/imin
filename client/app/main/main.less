@@ -30,7 +30,7 @@
       padding: 20px;
     }
 
-    .btn-create{
+    a.btn-create{
       color: #fff;
       background-color: @color-bg-submit;
       font-size: 20px;
@@ -49,76 +49,4 @@
     background-color: @color-main;
     color: #FFF;
   }
-}
-
-
-.navbar-text {
-  margin-left: 15px;
-}
-
-//
-// Generated with http://work.smarchal.com/twbscolor/
-//
-@bgDefault      : #ffffff;
-@bgHighlight    : #f4f4f4;
-@colDefault     : #666a73;
-@colHighlight   : #666a73;
-@dropDown       : false;
-.ddm() when (@dropDown) {
-  > .dropdown-menu {
-    background-color: @bgDefault;
-    > li > a {
-      color: @colDefault;
-      &:hover,  &:focus {
-        color: @colHighlight;
-        background-color: @bgHighlight; }}
-    .divider {
-      background-color: @bgHighlight;}}}
-.navbar-default {
-  background-color: @bgDefault;
-  border-color: @bgDefault;
-  .navbar-brand {
-    color: @colDefault;
-    &:hover, &:focus {
-      color: @colHighlight; }}
-  .navbar-text {
-    color: @colDefault; }
-  .navbar-nav {
-    > li {
-      > a {
-        color: @colDefault;
-        &:hover,  &:focus {
-          color: @colHighlight; }}
-      .ddm }
-    > .active {
-      > a, > a:hover, > a:focus {
-        color: @colHighlight;
-        background-color: @bgHighlight; }}
-    > .open {
-      > a, > a:hover, > a:focus {
-        color: @colHighlight;
-        background-color: @bgHighlight; }}}
-  .navbar-toggle {
-    border-color: @bgDefault;
-    &:hover, &:focus {
-      background-color: @bgHighlight; }
-    .icon-bar {
-      background-color: @colDefault; }}
-  .navbar-collapse,
-  .navbar-form {
-    border-color: @bgDefault; }
-  .navbar-link {
-    color: @colDefault;
-    &:hover {
-      color: @colHighlight; }}}
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu {
-    > li > a {
-      color: @colDefault;
-      &:hover, &:focus {
-        color: @colHighlight; }}
-    > .active {
-      > a, > a:hover, > a:focus {
-        color: @colHighlight;
-        background-color: @bgHighlight; }}}
 }
