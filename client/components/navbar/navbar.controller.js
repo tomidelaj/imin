@@ -8,6 +8,10 @@ angular.module('iminApp')
         'link' : '/pages/features'
       },
       {
+        'title': 'Groups',
+        'link' : '/groups'
+      },
+      {
         'title': 'Start',
         'link' : '/create'
       }

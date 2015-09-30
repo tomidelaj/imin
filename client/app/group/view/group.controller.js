@@ -30,7 +30,7 @@ angular.module('iminApp')
 
     $scope.createEventDialog = function() {
       ngDialog.open({
-        template: 'app/group/views/new-event-modal.html',
+        template: 'app/event/views/new-event-modal.html',
         controller: 'NewEventCtrl',
         showClose: true,
         data: {

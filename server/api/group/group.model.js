@@ -13,6 +13,10 @@ var GroupSchema = new Schema({
     type: String,
     required: true,
     unique: true
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 

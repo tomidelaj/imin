@@ -2,11 +2,12 @@
 
 var express = require('express');
 var controller = require('./group.controller');
+var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
 router.get('/', controller.list);
-router.post('/', controller.create);
+router.post('/', auth.isAuthenticated(), controller.create);
 
 router.get('/:id', controller.show);
 router.get('/:id/events', controller.events);

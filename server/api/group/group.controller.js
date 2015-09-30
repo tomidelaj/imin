@@ -21,7 +21,10 @@ exports.show = function(req, res) {
 
 // Creates a new group in the DB.
 exports.create = function(req, res) {
-  Group.create(req.body, function(err, group) {
+  var newGroup = new Group(req.body);
+  newGroup.owner = req.user;
+  
+  newGroup.save(function(err, group) {
     if(err) { return handleError(res, err); }
     return res.status(201).json(group);
   });
