@@ -7,8 +7,7 @@ angular.module('iminApp')
       var newEvent = new Events({
         group: $scope.ngDialogData.groupId,
         name: $scope.eventName,
-        // TODO let the use select datetime
-        date: new Date()
+        date: $scope.datetime
       });
 
       newEvent.$save().then(function() {

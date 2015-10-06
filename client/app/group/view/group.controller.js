@@ -16,7 +16,7 @@ angular.module('iminApp')
       return Groups.pending({
         groupId: $stateParams.groupId
       });
-    }
+    };
 
     $scope.group = Groups.get({
       groupId: $stateParams.groupId
