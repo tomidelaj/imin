@@ -1,0 +1,58 @@
+// Colors
+// --------------------------------------------------
+
+@btnText:                           #fff;
+@btnTextAlt:                        #000;
+
+@btnGooglePlusBackground:           #DC4B38;
+@btnFacebookBackground:             #297FB8;
+// --------------------------------------------------
+
+
+.btn-social(@background) {
+    text-transform: none;
+    padding: 8px 40px;
+    border-radius: 8px;
+    font-size: 16px;
+
+    width: 250px;
+
+    color: @btnText;
+    background-color: @background;
+
+    &:not([disabled]):hover {
+      background-color: lighten(@background, 4%);
+    }
+}
+
+// --------------------------------------------------
+
+.auth {
+
+  max-width: 800px;
+  margin: auto;
+  padding-top: 60px;
+
+  .header {
+    border-bottom: 2px solid @color-line;
+    text-align: center;
+    margin: 30px;
+    padding: 10px 60px;
+    font-size: 16px;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+
+  .body {
+    div{ padding-bottom: 20px;}
+  }
+
+  .btn-facebook {
+    .btn-social(@btnFacebookBackground);
+  }
+  .btn-google {
+    .btn-social(@btnGooglePlusBackground);
+  }
+}

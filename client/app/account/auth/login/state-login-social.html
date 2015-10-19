@@ -1,0 +1,9 @@
+<section layout='column' layout-align="center center">
+
+  <div><span>Don't have an account yet? </span><a ui-sref="auth.signup">Sign up</a></div>
+
+  <md-button class="btn-google" ng-click="loginOauth('google')" type="submit">Login with Google</md-button>
+  <md-button class="btn-facebook" ng-click="loginOauth('facebook')" type="submit">Login with Facebook</md-button>
+
+  <div><span>Not social? </span><a ui-sref="auth.login-custom">Custom</a></div>
+</section>
