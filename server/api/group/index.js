@@ -16,6 +16,8 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
+router.use('/:id/members', require('./member'));
+
 router.param('id', controller.groupById);
 
 module.exports = router;
