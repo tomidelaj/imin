@@ -7,8 +7,8 @@
 
 var Group = require('../api/group/group.model');
 var Event = require('../api/event/event.model');
-var Message = require('../api/message/message.model');
-var Participant = require('../api/participant/participant.model');
+var Message = require('../api/event/message/message.model');
+var Participant = require('../api/event/participant/participant.model');
 var User = require('../api/user/user.model');
 
 Event.find({}).remove(function () { });

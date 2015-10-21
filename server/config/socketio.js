@@ -50,10 +50,10 @@ module.exports = function (socketio) {
   //   handshake: true
   // }));
 
-  require('../api/participant/participant.socket').register(socketio);
-  require('../api/message/message.socket').register(socketio);
-  require('../api/event/event.socket').register(socketio);
   require('../api/group/group.socket').register(socketio);
+  require('../api/event/event.socket').register(socketio);
+  require('../api/event/participant/participant.socket').register(socketio);
+  require('../api/event/message/message.socket').register(socketio);
 
   socketio.on('connection', function (socket) {
     socket.address = socket.handshake.address !== null ?

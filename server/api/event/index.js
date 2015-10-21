@@ -12,8 +12,8 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
-router.use('/:id/participants', require('../participant'));
-router.use('/:id/messages', require('../message'));
+router.use('/:id/participants', require('./participant'));
+router.use('/:id/messages', require('./message'));
 
 router.param('id', controller.eventById);
 

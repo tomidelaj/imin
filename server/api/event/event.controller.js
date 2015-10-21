@@ -3,8 +3,6 @@
 var _ = require('lodash');
 var mongoose = require('mongoose');
 var Event = require('./event.model');
-var Message = require('../message/message.model');
-var Participant = require('../participant/participant.model');
 
 // Get list of events
 exports.index = function(req, res) {

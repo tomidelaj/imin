@@ -2,8 +2,8 @@
 
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
-  Event = require('../event/event.model'),
-  validators = require('../../components/validators/validators');
+  Event = require('../event.model'),
+  validators = require('../../../components/validators/validators');
 
 var MessageSchema = new Schema({
   sender: {
