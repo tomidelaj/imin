@@ -8,7 +8,7 @@ angular.module('iminApp')
       socket.join($scope.event._id);
     };
 
-    var onDestroy = function () {
+    var onDestroy = function() {
       socket.leave($scope.event._id);
     };
 
@@ -23,13 +23,11 @@ angular.module('iminApp')
       }
 
       // !!! This is strange pattern -> TODO: promised based communication
-      if ($scope.event.$promise)
-      {
-        $scope.event.$promise.then(function (){
-            init();
-          });
-      }
-      else {
+      if ($scope.event.$promise) {
+        $scope.event.$promise.then(function() {
+          init();
+        });
+      } else {
         init();
       }
 
