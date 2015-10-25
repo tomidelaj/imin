@@ -11,7 +11,8 @@ var EventSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,
-    required: true
+    required: true,
+    index: true
   },
   stats: { // Updated by ref. models (Participant, Message)
     participants: {
