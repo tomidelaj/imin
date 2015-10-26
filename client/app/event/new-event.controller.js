@@ -7,7 +7,10 @@ angular.module('iminApp')
       var newEvent = new Events({
         group: $scope.ngDialogData.groupId,
         name: $scope.eventName,
-        date: $scope.datetime
+        date: $scope.datetime,
+        repeatable: {
+          isRepeatable: $scope.isRepeatable
+        }
       });
 
       newEvent.$save().then(function() {

@@ -11,15 +11,34 @@ var EventSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,
-    required: true
+    required: true,
+    index: true
   },
   stats: { // Updated by ref. models (Participant, Message)
-    participants: {type: Number, default:0},
-    messages: {type: Number, default:0}
+    participants: {
+      type: Number,
+      default: 0
+    },
+    messages: {
+      type: Number,
+      default: 0
+    }
   },
   group: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Group'
+  },
+  repeatable: {
+    isRepeatable: {
+      type: Boolean,
+      default: false,
+      index: true
+    },
+    hasRepeated: {
+      type: Boolean,
+      default: false,
+      index: true
+    }
   }
 });
 

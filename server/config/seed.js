@@ -21,7 +21,10 @@ Group.find({}).remove(function() {
   }, function (err, group) {
     Event.create({
       name: "Event 1",
-      group: group._id
+      group: group._id,
+      repeatable: {
+        isRepeatable: true
+      }
     }, function (err, event){
       Message.create({
         sender: 'Mariano',
