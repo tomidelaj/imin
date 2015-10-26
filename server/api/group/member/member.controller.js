@@ -7,7 +7,8 @@ var Member = require('./member.model');
 exports.index = function(req, res) {
   Member.findByGroupId(req.group._id, function (err, members) {
     if(err) { return handleError(res, err); }
-    return res.status(200).json(members);
+    var users = _.map(members, 'user')
+    return res.status(200).json(users);
   });
 };
 
@@ -31,6 +32,16 @@ exports.remove = function(req, res) {
       return res.status(204).send('No Content');
     });
   });
+};
+
+exports.join = function(req, res) {
+  req.body.user_id = req.user._id;
+  exports.add(req, res);
+};
+
+exports.leave = function(req, res) {
+  req.body.user_id = req.user._id;
+  exports.remove(req, res);
 };
 
 function handleError(res, err) {

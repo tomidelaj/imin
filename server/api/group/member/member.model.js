@@ -16,16 +16,26 @@ var MemberSchema = new Schema({
   }
 });
 
+
+MemberSchema.pre('save', function(next, done){
+    var self = this;
+    this.constructor.findOne({user: self.user, group: self.group}, function(err, user){
+      if (err){
+        done(err);
+      } else if (user){
+        next(new Error("User already member."));
+      } else {
+        next();
+      }
+    }
+  )
+  });
+
 MemberSchema.statics.findByGroupId = function(groupId, cb) {
   return this.find({
-    group: new mongoose.Types.ObjectId(groupId)
-  }, cb);
-};
-
-MemberSchema.statics.findByUserId = function(userId, cb) {
-  return this.find({
-    user: new mongoose.Types.ObjectId(userId)
-  }, cb);
+    group: new mongoose.Types.ObjectId(groupId)})
+  .populate('user', 'name')
+  .exec(cb);
 };
 
 MemberSchema.statics.findByGroupAndUserId = function(groupId, userId, cb) {
