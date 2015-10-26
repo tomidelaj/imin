@@ -17,9 +17,7 @@ module.exports = function() {
           // Hande event 1 hour after it ends
           $lte: moment().add(1, 'hours').toDate()
         }
-      })
-      .populate('group')
-      .exec(function(err, docs) {
+      }, function(err, docs) {
         docs.forEach(function(event, index, array) {
           // Set current event as obsolete
           event.repeatable.hasRepeated = true;
@@ -29,13 +27,13 @@ module.exports = function() {
           var newEvent = Event.create({
             name: event.name,
             date: moment().add(1, 'weeks').toDate(),
-            group: event.group._id,
+            group: event.group,
             repeatable: {
               isRepeatable: true
             }
           });
         });
-      });
+      })
       // TODO move timezone to settings
   }, null, true, 'Europe/Ljubljana');
 };
