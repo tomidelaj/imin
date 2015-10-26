@@ -6,87 +6,88 @@
 'use strict';
 
 var Group = require('../api/group/group.model');
+var Member = require('../api/group/member/member.model');
 var Event = require('../api/event/event.model');
 var Message = require('../api/event/message/message.model');
 var Participant = require('../api/event/participant/participant.model');
 var User = require('../api/user/user.model');
+var mongoose = require('mongoose');
 
-Event.find({}).remove(function () { });
+var p = new mongoose.Promise();
+var userAdmin,userTest, groupFuzbal, groupBasket;
 
-Group.find({}).remove(function() {
-  Group.create({
+p
+.then(function () {return User.remove({}).exec()})
+.then(function () {return Group.remove({}).exec()})
+.then(function () {return Member.remove({}).exec()})
+.then(function () {return Event.remove({}).exec()})
+.then(function () {return Message.remove({}).exec()})
+.then(function () {return Participant.remove({}).exec()})
+.then(function () {
+    return User.create({
+      provider: 'local',
+      role: 'admin',
+      name: 'Admin',
+      email: 'admin@admin.com',
+      password: 'admin'
+    },{
+      provider: 'local',
+      name: 'Test User',
+      email: 'test@test.com',
+      password: 'test'
+    }).then(function (admin, test){
+      userAdmin = admin;
+      userTest = test;
+    });
+})
+.then(function () {
+    return Group.create({
     name: 'Fuzbal (Xlab)',
     slug: 'fuzbal',
-    description : 'Ale sisiji xlabovi'
-  }, function (err, group) {
-    Event.create({
-      name: "Event 1",
-      group: group._id,
+    owner: userAdmin._id,
+    description: 'Ale sisiji xlabovi'
+  },{
+    name: 'Basket',
+    slug: 'basket',
+    owner: userTest._id,
+    description: 'Ale basketasi'
+  }).then(function (fuzbal, basket) {
+    groupFuzbal = fuzbal;
+    groupBasket = basket;
+  });
+})
+.then(function () {
+    return Event.create({
+      name: "Event Fuzbal 1",
+      group: groupFuzbal._id,
       repeatable: {
         isRepeatable: true
       }
-    }, function (err, event){
-      Message.create({
+    },{
+      name: "Event Basket 1",
+      group: groupBasket._id,
+      repeatable: {
+        isRepeatable: true
+      }
+    });
+})
+.then(function (event) {
+    Message.create({
         sender: 'Mariano',
         message: 'Prneste žogo',
         date: new Date(),
         event: event._id
       });
 
-      Participant.create({
+      Member.create({
+        group: groupFuzbal._id,
+        user: userTest._id
+      });
+
+      return Participant.create({
         name: 'Jure Polutnik',
         event: event._id
       });
-
-      Participant.create({
-        name: 'Primoz Hadalin',
-        event: event._id
-      });
-    });
-
-    Event.create({
-      name: "Event 2",
-      group: group._id
-    });
-
-    Event.create({
-      name: "Event 3",
-      users: [],
-      group: group._id
-    });
-  });
-
-  Group.create({
-    name : 'Basket (Xlab)',
-    slug : 'basket',
-    description : '...'
-  }, function (err, group) {});
 });
 
-User.find({}).remove(function() {
-  User.create({
-    provider: 'local',
-    name: 'Test User',
-    email: 'test@test.com',
-    password: 'test'
-  }, {
-    provider: 'local',
-    name: 'Test User 2',
-    email: 'test@test.com',
-    password: 'test2'
-  }, {
-    provider: 'local',
-    name: 'Test User 3',
-    email: 'test3@test.com',
-    password: 'test3'
-  }, {
-    provider: 'local',
-    role: 'admin',
-    name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
-  }, function() {
-      console.log('finished populating users');
-    }
-  );
-});
+p.fulfill();
