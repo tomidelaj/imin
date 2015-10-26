@@ -196,7 +196,9 @@ module.exports = function (grunt) {
     'node-inspector': {
       custom: {
         options: {
-          'web-host': 'localhost'
+          'web-host': 'localhost',
+          'preload': false,
+          'hidden':['node_modules/']
         }
       }
     },
