@@ -8,6 +8,6 @@ module.exports = {
     uri: 'mongodb://localhost/imin-dev'
   },
 
-  seedDB: true,
+  seedDB: false,
   DEBUG: 'http*,socket.io:socket'
 };

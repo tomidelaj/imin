@@ -1,8 +1,8 @@
 <section layout='column' layout-align="center center">
 
-  <div><span>Already have an account? </span><a ui-sref="auth.login">Log in</a></div>
+  <div><span>Already have an account? </span><a ui-sref="auth.login(params)">Log in</a></div>
   <md-button class="btn-google" ng-click="loginOauth('google')" type="submit">Sign up with Google</md-button>
   <md-button class="btn-facebook" ng-click="loginOauth('facebook')" type="submit">Sign up with Facebook</md-button>
 
-  <div><span>Not social? </span><a ui-sref="auth.signup-custom">Custom</a></div>
+  <div><span>Not social? </span><a ui-sref="auth.signup-custom(params)">Custom</a></div>
 </section>

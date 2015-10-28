@@ -14,11 +14,4 @@ router.delete('/',gs.isOwner(), controller.remove);
 router.post('/join', auth.isAuthenticated(), controller.join);
 router.post('/leave', gs.isMember(), controller.leave);
 
-
-// router.get('/:id', controller.show);
-// router.post('/', controller.create);
-// router.put('/:id', controller.update);
-// router.patch('/:id', controller.update);
-// router.delete('/:id', controller.destroy);
-
 module.exports = router;

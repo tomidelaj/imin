@@ -2,9 +2,12 @@
 'use strict';
 
 angular.module('iminApp')
-  .controller('AuthCtrl', function ($scope, Auth, $location, $window) {
+  .controller('AuthCtrl', function ($scope, Auth, $state, $stateParams, $window) {
     $scope.user = {};
     $scope.errors = {};
+    $scope.params = $stateParams;
+
+    console.log($stateParams);
 
     $scope.register = function(form) {
       $scope.submitted = true;
@@ -16,8 +19,8 @@ angular.module('iminApp')
           password: $scope.user.password
         })
         .then( function() {
-          // Account created, redirect to home
-          $location.path('/');
+          // Account created, redirect to target or home
+          $state.go($scope.params.target ? $scope.params.target : 'main');
         })
         .catch( function(err) {
           err = err.data;
@@ -41,8 +44,8 @@ angular.module('iminApp')
           password: $scope.user.password
         })
         .then( function() {
-          // Logged in, redirect to home
-          $location.path('/');
+          // Logged in, redirect to target or home
+          $state.go($scope.params.target ? $scope.params.target : 'main');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
@@ -51,6 +54,9 @@ angular.module('iminApp')
     };
 
     $scope.loginOauth = function(provider) {
-      $window.location.href = '/auth/' + provider;
+
+      var target = $state.href($scope.params.target?$scope.params.target:'main');
+
+      $window.location.href = '/auth/' + provider+'?target='+target;
     };
   });

@@ -13,7 +13,7 @@ function isOwner() {
   return compose()
     .use(auth.isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
-      if (req.group.owner === req.user._id) {
+      if (req.user._id.equals(req.group.owner)) {
         next();
       } else {
         res.status(403).send('Forbidden');

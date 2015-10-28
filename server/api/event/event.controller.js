@@ -53,11 +53,12 @@ exports.eventById = function(req, res, next, id){
     return res.status(400).send('Event is invalid');
   }
 
-  Event.findById(req.params.id, function (err, event) {
+  Event.findById(req.params.id).populate('group').exec(function (err, event) {
     if(err) { return next(); }
     if(!event) { return res.status(404).send('Not Found'); }
 
     req.event = event;
+    req.group = event.group;
     next();
   });
 };

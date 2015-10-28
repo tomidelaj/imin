@@ -14,22 +14,22 @@ angular.module('iminApp')
         templateUrl: 'app/account/auth/auth.html',
       })
       .state('auth.login', {
-        url: '^/login',
+        url: '^/login?target',
         templateUrl: 'app/account/auth/login/state-login-social.html',
         controller: 'AuthCtrl'
       })
       .state('auth.login-custom', {
-        url: '^/login/custom',
+        url: '^/login/custom?target',
         templateUrl: 'app/account/auth/login/state-login-custom.html',
         controller: 'AuthCtrl'
       })
       .state('auth.signup', {
-        url: '^/signup',
+        url: '^/signup?target',
         templateUrl: 'app/account/auth/signup/state-signup-social.html',
         controller: 'AuthCtrl'
       })
       .state('auth.signup-custom', {
-        url: '^/signup/custom',
+        url: '^/signup/custom?target',
         templateUrl: 'app/account/auth/signup/state-signup-custom.html',
         controller: 'AuthCtrl'
       });

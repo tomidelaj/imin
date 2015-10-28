@@ -2,6 +2,7 @@
 
 var express = require('express');
 var passport = require('passport');
+var auth = require('./auth.service');
 var config = require('../config/environment');
 var User = require('../api/user/user.model');
 
@@ -13,9 +14,12 @@ require('./twitter/passport').setup(User, config);
 
 var router = express.Router();
 
+router.use(auth.preAuth);
+
 router.use('/local', require('./local'));
 router.use('/facebook', require('./facebook'));
 router.use('/twitter', require('./twitter'));
 router.use('/google', require('./google'));
+
 
 module.exports = router;
