@@ -14,7 +14,7 @@ var User = require('../api/user/user.model');
 var mongoose = require('mongoose');
 
 var p = new mongoose.Promise();
-var userAdmin,userTest, groupFuzbal, groupBasket;
+var userAdmin, userTest, groupFuzbal, groupBasket;
 
 p
 .then(function () {return User.remove({}).exec()})
@@ -59,6 +59,7 @@ p
 .then(function () {
     return Event.create({
       name: "Event Fuzbal 1",
+      location: 'Dunajska',
       group: groupFuzbal._id,
       repeatable: {
         isRepeatable: true

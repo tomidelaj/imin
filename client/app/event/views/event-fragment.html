@@ -5,6 +5,7 @@
       <h2> {{event.name}} </h2>
     </a>
     <h4> {{event.date | amDateFormat:'dddd hh:mm, MMMM Do'}} </h4>
+    <h4> {{event.location}} </h4>
   </div>
   <div class='stats' flex layout='row' layout-align='center center'>
     <span><ng-md-icon flex icon="directions_walk" class='stats-icon'></ng-md-icon> {{event.stats.participants}}</span>

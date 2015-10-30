@@ -14,6 +14,10 @@ var EventSchema = new Schema({
     required: true,
     index: true
   },
+  location: {
+    type: String,
+    default: ''
+  },
   stats: { // Updated by ref. models (Participant, Message)
     participants: {
       type: Number,
